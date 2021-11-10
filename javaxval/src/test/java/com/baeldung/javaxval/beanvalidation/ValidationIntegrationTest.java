@@ -39,7 +39,20 @@ public class ValidationIntegrationTest {
         user.setAboutMe("Its all about me!!");
         user.setAge(50);
         Set<ConstraintViolation<User>> violations = validator.validate(user);
+        System.out.println(violations);
         assertEquals(violations.isEmpty(), false);
+    }
+
+    @Test
+    public void ifAboutMeIsNull_sizeNotCheckValid() {
+        User user = new User();
+        user.setName("MyName");
+        user.setWorking(true);
+        user.setAboutMe("Its all about me!!");
+        user.setAge(50);
+        Set<ConstraintViolation<User>> violations = validator.validate(user);
+        System.out.println(violations);
+        assertEquals(violations.isEmpty(), true);
     }
 
     @Test
